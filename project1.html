@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+    <script>
+      // !! IMPORTANT README:
+
+      // You may add additional external JS and CSS as needed to complete the project, however the current external resource MUST remain in place for the tests to work. BABEL must also be left in place.
+
+      /***********
+      INSTRUCTIONS:
+        - Select the project you would
+          like to complete from the dropdown
+          menu.
+        - Click the "RUN TESTS" button to
+          run the tests against the blank
+          pen.
+        - Click the "TESTS" button to see
+          the individual test cases.
+          (should all be failing at first)
+        - Start coding! As you fulfill each
+          test case, you will see them go
+          from red to green.
+        - As you start to build out your
+          project, when tests are failing,
+          you should get helpful errors
+          along the way!
+          ************/
+
+      // PLEASE NOTE: Adding global style rules using the * selector, or by adding rules to body {..} or html {..}, or to all elements within body or html, i.e. h1 {..}, has the potential to pollute the test suite's CSS. Try adding: * { color: red }, for a quick example!
+
+      // Once you have read the above messages, you can delete all comments.
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* * {
+        border: 1px solid hotpink;
+      } */
+
+      #the-body {
+        margin: 0px;
+      }
+
+      #main {
+        /* --navlink-font-size: 32px;
+        --subject-font-size: 24px;
+        --header-font-size: 18px;
+        --caption-font-size: 14px; */
+
+        font-family: "Cutive Mono", monospace;
+        text-align: center;
+        background-color: rgb(238, 236, 236);
+        color: #636161;
+        scroll-behavior: smooth;
+        /* padding: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px; */
+      }
+
+      /* p {
+        font-size: 1.1em;
+      } */
+
+      hr {
+        width: 85%;
+      }
+
+      a {
+        color: pink;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: hotpink;
+      }
+
+      /* #navbar {
+        height: auto;
+        margin-bottom: 0px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      #navbar ul {
+        list-style: none;
+        display: inline-flex;
+        margin-top: 2px;
+        margin-bottom: 2px;
+      }
+
+      #navbar ul li {
+        padding: 0px 20px;
+        font-weight: 800;
+        font-size: 1em;
+      } */
+
+      #title {
+        padding: 10px;
+        background-color: #636161;
+        color: #eceaea;
+        border-bottom: 2px solid silver;
+      }
+
+      #title h1 {
+        font-size: 3em;
+        font-weight: 800;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      #title p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      /* #img-div {
+          padding: 5px;
+        } */
+
+      #img-div {
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 50px;
+        width: 80%;
+      }
+
+      #image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5px;
+        width: 90%;
+        /* max-width: 100%; */
+        height: auto;
+        border: 2px solid silver;
+        border-radius: 2px;
+      }
+
+      #tribute-info {
+        width: 80%;
+        margin: auto;
+        /* border: 1px solid hotpink; */
+      }
+
+      #tribute-info section {
+        margin: auto;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+      }
+
+      #about-div {
+        text-align: start;
+        /* background-color: #636161;
+        color: #eceaea; */
+      }
+
+      #about-div article p {
+        line-height: 2em;
+      }
+
+      #portrait-photo {
+        width: 15%;
+        height: auto;
+        border-radius: 50%;
+        float: left;
+        border: 2px solid silver;
+        margin: 20px 10px 10px 10px;
+      }
+
+      #tribute-info section .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-top: 2em;
+        margin-bottom: 2em;
+      }
+
+      #special-dates header {
+        text-align: center;
+      }
+
+      /* The flip card container - set the width and height to whatever you want.
+      We have added the border property to demonstrate that the flip itself goes
+      out of the box on hover (remove perspective if you don't want the 3D effect */
+      .flip-card {
+        background-color: transparent;
+        width: 25%;
+        height: 12.5em;
+        perspective: 1000px; /* Remove this if you don't want the 3D effect */
+        border-radius: 0.2em;
+        margin: 2em 1em;
+      }
+
+      /* This container is needed to position the front and back side */
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        border-radius: 0.2em;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+      }
+
+      /* Do an horizontal flip when you move the mouse over the flip box container */
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      /* Position the front and back side */
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+        border-radius: 0.2em;
+      }
+
+      .flip-card-front h1, .flip-card-back p {
+        align-self: center;
+        margin: 1.5rem;
+      }
+
+      .flip-card-back hr {
+        margin: 0px auto;
+      }
+
+      /* Style the front side */
+      .flip-card-front {
+        background-color: #d4d1d1;
+        color: #636161;
+        border-radius: 0.2em;
+      }
+
+      /* Style the back side */
+      .flip-card-back {
+        background-color: #636161;
+        color: #eceaea;
+        transform: rotateY(180deg);
+        border-radius: 0.2em;
+      }
+
+      .card {
+        width: 30%;
+        border-radius: 0.2em;
+        margin: 2rem;
+        padding: 2em;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+      }
+
+      .long-card {
+        width: 60%;
+      }
+
+      @keyframes push-out {
+        100% {
+          transform: scale(1.05);
+        }
+      }
+
+      .card:hover {
+        animation-name: push-out;
+        animation-duration: 500ms;
+        animation-fill-mode: forwards;
+      }
+
+      blockquote hr {
+        border: 1px solid hotpink;
+      }
+
+      footer {
+        padding: 2em;
+        background-color: #636161;
+        border-top: 2px solid silver;
+        color: #eceaea;
+      }
+
+      @media (min-width: 2000px) {
+        #main {
+          font-size: 32px;
+        }
+
+        #tribute-info {
+          width: 78%;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        #tribute-info {
+          width: 85%;
+        }
+      }
+
+      @media (max-width: 950px) {
+        #img-div {
+          width: 95%;
+        }
+
+        #tribute-info {
+          width: 90%;
+        }
+
+        .flip-card {
+          width: 40%;
+        }
+        
+        .card {
+          width: 60%;
+        }
+
+        .flip-card-front h1, .flip-card-back p {
+          margin: 0px;
+        }
+
+        #about-div {
+          display: flex;
+          justify-items: center;
+        }
+
+        #portrait-photo {
+          display: block;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          background: url(https://res.cloudinary.com/moh-x/image/upload/v1603249927/fcc/alan_turing/full_alan_thvdbc.jpg) no-repeat;
+          width: 25%; /* Width of new image */
+          height: auto; /* Height of new image */
+          padding-left: 25%; /* Equal to width of new image */
+          border-radius: none;
+        }
+
+        #full-photo {
+          visibility: hidden;
+          display: none;
+          background: transparent;
+        }
+
+        #about-div article {
+          clear: both;
+        }
+      }
+
+      @media (max-width: 750px) {
+        #tribute-info {
+          width: 95%;
+        }
+
+        #tribute-info section {
+          padding-left: 0.5em;
+          padding-right: 0.5em;
+          margin-top: 3rem;
+          margin-bottom: 3rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        #img-div {
+          margin-bottom: 30px;
+        }
+
+        #image {
+          width: 100%;
+          /* max-width: 100%; */
+        }
+
+        .flip-card {
+          width: 70%;
+        }
+      }
+
+      @media (max-width: 450px) {
+        #img-div {
+          width: 95%;
+          margin-top: 0.5em;
+        }
+
+        #image {
+          width: 100%;
+          border: 1px solid silver;
+        }
+
+        #profile-photo {
+        border: 1px solid silver;
+        }
+
+        .flip-card {
+          width: 90%;
+          margin: 1em 0.5em;
+        }
+
+        #tribute-info section {
+          padding-left: 0.5em;
+          padding-right: 0.5em;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .card {
+          width: 95%;
+          padding: 1em;
+          margin: 1em 0.5em;
+        }
+
+        footer {
+          padding: 1em;
+        }
+      }
+
+      @media (max-width: 400px) {
+        #main {
+          font-size: 12px;
+        }
+
+        .card {
+          width: 100%;
+        }
+
+        #tribute-info {
+          width: 98%;
+        }
+
+        footer {
+          padding: 1em 0.5em;
+        }
+      }
+
+      /* @media (max-width: 1500px) {
+        #img-div {
+          width: 90%;
+        }
+
+        #tribute-info {
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 800px) {
+        || #main {
+          background-color: red;
+        }
+
+        * {
+          border: 1px solid green;
+        } ||
+
+        img {
+          width: 100%;
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+
+        .card {
+          width: 30%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        #img-div {
+          width: 98%;
+          margin-top: 2px;
+        }
+
+        #image {
+          width: 99%;
+        }
+
+        #img-caption {
+          font-size: 10px;
+        }
+
+        #navbar ul li {
+          padding: 0px 15px;
+          font-weight: 600;
+          font-size: 15px;
+        }
+
+        #tribute-info section .cards {
+          || flex-direction: column;
+          justify-content: flex-start;
+          align-items: center; ||
+          margin-top: 15px;
+          margin-bottom: 15px;
+        }
+
+        .card {
+          width: 75%;
+        }
+
+        footer {
+          padding: 10px;
+        }
+      } */
+    </style>
+
+    <title>Alan's Tribute</title>
+  </head>
+
+  <body id="the-body">
+    <main id="main">
+      <header id="title">
+        <!-- <nav id="navbar">
+          <ul>
+            <li><a href="#facts-div">Facts</a></li>
+            <li><a href="#quotes-div">Quotes</a></li>
+          </ul>
+        </nav> -->
+        <h1>Alan Turing</h1>
+        <p><strong>Father of modern computing</strong></p>
+      </header>
+
+      <figure id="img-div">
+        <img
+          src="https://res.cloudinary.com/moh-x/image/upload/v1601350123/fcc/alan_turing/TELEMMGLPICT000144359622_trans_NvBQzQNjv4BqGsuusCNgIVrbHeyqC3FAHFS9TlPrA3ZHvnUBku6R6FE_xznbcy.jpg"
+          alt="Smiling Alan with his family"
+          id="image"
+        />
+        <figcaption id="img-caption">
+          Alan Turing Cracked The Enigma Code - US Military
+        </figcaption>
+      </figure>
+
+      <hr />
+
+      <div id="tribute-info">
+        <section id="about-div">
+          <img
+            src="https://res.cloudinary.com/moh-x/image/upload/v1601350111/fcc/alan_turing/AlanTuring_p2pj9n.jpg"
+            alt="a portrait photo of Sir Alan"
+            id="portrait-photo"
+          />
+          <!-- <img src="https://res.cloudinary.com/moh-x/image/upload/v1603249927/fcc/alan_turing/full_alan_thvdbc.jpg" alt="" class="full-photo"> -->
+          <article>
+            <h2>About Alan</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Dignissimos iure dolor neque nemo ducimus minima quia laboriosam
+              pariatur nam id quidem culpa ut hic, quam vitae blanditiis, optio
+              perspiciatis explicabo. Minus explicabo ex aliquid? Deserunt
+              voluptas nisi temporibus expedita delectus! Dignissimos
+              praesentium nesciunt ratione quae? Error quis officia ab doloribus
+              assumenda vero. Sequi debitis vitae, doloribus officiis assumenda
+              neque recusandae. At labore praesentium, laborum consequuntur
+              quasi laudantium beatae, minus alias quia, ab unde voluptatibus
+              officiis cumque! Error minima doloribus adipisci corrupti rem
+              omnis ipsam quae, eum obcaecati quas, explicabo non. Ducimus
+              officia ab et eaque libero, officiis dicta laudantium iste
+              quisquam. Assumenda ea, saepe fuga voluptate reiciendis impedit
+              quo, mollitia veniam fugit voluptatem maxime consectetur eligendi
+              dicta numquam iusto? Dolore. Odit totam quaerat minus sit, eum
+              cumque dolorem maiores facere distinctio, odio accusamus
+              voluptatum nulla ea perspiciatis quas, sed quisquam cum vitae
+              porro deleniti eos veniam numquam? Sit, rem exercitationem.
+            </p>
+          </article>
+        </section>
+
+        <hr />
+
+        <!-- Special dates section -->
+        <section id="special-dates">
+          <header>
+            <h1>Dates to remember</h1>
+            <p>Flip each card to find out what makes the date special.</p>
+          </header>
+
+          <div class="cards" id="date-cards">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h1>January 5, 1975.</h1>
+                </div>
+                <div class="flip-card-back">
+                  <p>Alan turing cracked the enigma code transmission and ended the war.</p>
+                  <hr>
+                  <p>January 5, 1975.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h1>January 5, 1975.</h1>
+                </div>
+                <div class="flip-card-back">
+                  <p>Alan turing cracked the enigma code transmission and ended the war.</p>
+                  <hr>
+                  <p>January 5, 1975.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h1>January 5, 1975.</h1>
+                </div>
+                <div class="flip-card-back">
+                  <p>Alan turing cracked the enigma code transmission and ended the war.</p>
+                  <hr>
+                  <p>January 5, 1975.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h1>January 5, 1975.</h1>
+                </div>
+                <div class="flip-card-back">
+                  <p>Alan turing cracked the enigma code transmission and ended the war.</p>
+                  <hr>
+                  <p>January 5, 1975.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h1>January 5, 1975.</h1>
+                </div>
+                <div class="flip-card-back">
+                  <p>Alan turing cracked the enigma code transmission and ended the war.</p>
+                  <hr>
+                  <p>January 5, 1975.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h1>January 5, 1975.</h1>
+                </div>
+                <div class="flip-card-back">
+                  <p>Alan turing cracked the enigma code transmission and ended the war.</p>
+                  <hr>
+                  <p>January 5, 1975.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- <section id="facts-div" accesskey="f">
+          <header>
+            <h2>Some facts about Alan Mathison Turing</h2>
+          </header>
+          <div class="cards">
+            <div class="fact">
+              <div class="fact-icon"></div>
+              <div class="card long-card">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
+                  nesciunt alias adipisci error. Nesciunt mollitia ad maxime
+                  sapiente odio ut placeat, ipsa molestiae. Quod, dolore!
+                  Voluptatem excepturi esse dignissimos iure?
+                </p>
+              </div>
+            </div>
+
+            <div class="fact">
+              <div class="fact-icon"></div>
+              <div class="card long-card">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Accusamus quia consequuntur nulla rem atque sint pariatur!
+                  Eaque, ad itaque. Delectus dolorum error voluptas ipsum animi
+                  provident, et quae sit molestias.
+                </p>
+              </div>
+            </div>
+
+            <div class="fact">
+              <div class="fact-icon"></div>
+              <div class="card long-card">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Placeat eaque hic quod ipsam sed earum, eos harum eius
+                  nesciunt. Labore nulla doloribus accusamus laudantium
+                  reiciendis molestias amet, commodi cumque nesciunt.
+                </p>
+              </div>
+            </div>
+
+            <div class="fact">
+              <div class="fact-icon"></div>
+              <div class="card long-card">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
+                  nesciunt alias adipisci error. Nesciunt mollitia ad maxime
+                  sapiente odio ut placeat, ipsa molestiae. Quod, dolore!
+                  Voluptatem excepturi esse dignissimos iure?
+                </p>
+              </div>
+            </div>
+
+            <div class="fact">
+              <div class="fact-icon"></div>
+              <div class="card long-card">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Accusamus quia consequuntur nulla rem atque sint pariatur!
+                  Eaque, ad itaque. Delectus dolorum error voluptas ipsum animi
+                  provident, et quae sit molestias.
+                </p>
+              </div>
+            </div>
+
+            <div class="fact">
+              <div class="fact-icon"></div>
+              <div class="card long-card">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Placeat eaque hic quod ipsam sed earum, eos harum eius
+                  nesciunt. Labore nulla doloribus accusamus laudantium
+                  reiciendis molestias amet, commodi cumque nesciunt.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr /> -->
+
+        <section id="quotes-div" accesskey="q">
+          <header>
+            <h2>Some of Alan Turing's quotes</h2>
+          </header>
+          <div class="cards">
+            <blockquote cite="" class="quote card">
+              "Accusamus, architecto provident alias tempore aspernatur nulla
+              fugit vitae laborum molestiae quibusdam laudantium dolorum,"
+              <hr />
+              <cite>Lorem ipsum dolor</cite>
+            </blockquote>
+            <blockquote cite="" class="quote card">
+              "Accusamus, architecto provident alias tempore aspernatur nulla
+              fugit vitae laborum molestiae quibusdam laudantium dolorum,"
+              <hr />
+              <cite>Lorem ipsum dolor</cite>
+            </blockquote>
+            <blockquote cite="" class="quote card">
+              "Accusamus, architecto provident alias tempore aspernatur nulla
+              fugit vitae laborum molestiae quibusdam laudantium dolorum,"
+              <hr />
+              <cite>Lorem ipsum dolor</cite>
+            </blockquote>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        <p>
+          <strong
+            ><em
+              >To read more about this hero, you may visit
+              <a
+                href="https://en.wikipedia.org/wiki/Alan_Turing"
+                target="_blank"
+                id="tribute-link"
+                >his wikipedia page</a
+              >.</em
+            ></strong
+          >
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

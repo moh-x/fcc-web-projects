@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script>
+      // !! IMPORTANT README:
+
+      // You may add additional external JS and CSS as needed to complete the project, however the current external resource MUST remain in place for the tests to work. BABEL must also be left in place.
+
+      /***********
+      INSTRUCTIONS:
+        - Select the project you would
+          like to complete from the dropdown
+          menu.
+        - Click the "RUN TESTS" button to
+          run the tests against the blank
+          pen.
+        - Click the "TESTS" button to see
+          the individual test cases.
+          (should all be failing at first)
+        - Start coding! As you fulfill each
+          test case, you will see them go
+          from red to green.
+        - As you start to build out your
+          project, when tests are failing,
+          you should get helpful errors
+          along the way!
+          ************/
+
+      // PLEASE NOTE: Adding global style rules using the * selector, or by adding rules to body {..} or html {..}, or to all elements within body or html, i.e. h1 {..}, has the potential to pollute the test suite's CSS. Try adding: * { color: red }, for a quick example!
+
+      // Once you have read the above messages, you can delete all comments.
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* * {
+        border: 0.5px solid hotpink;
+      } */
+      #main {
+        margin: 0px;
+        background-image: url(https://res.cloudinary.com/moh-x/image/upload/v1602721346/fcc/survey_form/carolyn-v-qld2zHkOH5I-unsplash_ay1qqp.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: blanchedalmond;
+      }
+
+      #form-container {
+        --header-font-size: 32px;
+        --title-font-size: 24px;
+        --label-font-size: 18px;
+        --footer-font-size: 14px;
+        --input-font-size: 0.8em;
+
+        max-width: 500px;
+        height: auto;
+        width: 100%;
+        margin: auto;
+        flex-direction: column;
+        background-color: rgb(49, 17, 8);
+        color: rgb(214, 213, 213);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+      }
+
+      #survey-form {
+        padding-top: 10px;
+      }
+
+      #form-container header {
+        padding: 15px 10px;
+        text-align: center;
+      }
+
+      #form-container #survey-form {
+        background-color: rgb(214, 213, 213);
+        color: rgb(49, 17, 8);
+        padding-bottom: 20px;
+      }
+
+      #title {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: var(--header-font-size);
+      }
+
+      #description {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      #survey-form section {
+        padding: 15px;
+      }
+
+      input,
+      select,
+      textarea {
+        border-radius: 2%;
+        border: 1px solid rgb(49, 17, 8);
+        padding: 0.15em 0.4em;
+        font-size: var(--input-font-size);
+      }
+
+      /* .form-field {
+        margin: 20px;
+      } */
+
+      .section-title {
+        display: grid;
+        grid-template-columns: 1fr auto 8fr;
+        column-gap: 1%;
+        align-items: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      .section-title h2 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      .section-title hr {
+        max-height: 1px;
+        width: 100%;
+      }
+
+      #name-label,
+      #email-label,
+      #number-label,
+      #dropdown-label,
+      #more-info-label,
+      legend {
+        font-size: var(--label-font-size);
+        font-weight: 540;
+      }
+
+      #personal-info .section-fields {
+        width: 95%;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+          "name name"
+          "email age";
+        margin-top: 10px;
+        margin-bottom: 0px;
+        gap: 15px 10%;
+      }
+
+      #name-field {
+        grid-area: name;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 5px;
+        align-items: end;
+      }
+
+      #email-field {
+        grid-area: email;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 5px;
+        align-items: end;
+      }
+
+      #age-field {
+        margin-left: auto;
+        grid-area: age;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 5px;
+        align-items: end;
+      }
+
+      #name {
+        width: 100%;
+      }
+
+      #email {
+        width: 100%;
+      }
+
+      #number {
+        width: 100%;
+      }
+
+      #reading-habits .section-fields {
+        margin-top: 10px;
+        margin-bottom: 0px;
+      }
+
+      #reading-habits .section-fields .form-field {
+        margin-bottom: 20px;
+      }
+
+      #dropdown-field {
+        width: 99%;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 5px;
+        align-items: center;
+      }
+
+      fieldset label {
+        font-style: italic;
+      }
+
+      fieldset legend {
+        margin-bottom: 5px;
+      }
+
+      fieldset .all-set {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      fieldset .each-set {
+        margin-right: 2em;
+      }
+
+      fieldset input {
+        margin: 0.2em;
+      }
+
+      #more-info {
+        margin-top: 10px;
+        width: 96%;
+      }
+
+      #submit-button-div {
+        display: flex;
+      }
+
+      #submit-button-div #submit {
+        padding: 5px 15px;
+        border-radius: 5%;
+        background-color: rgb(214, 213, 213);
+        color: rgb(49, 17, 8);
+        border: 1px solid rgb(49, 17, 8);
+        font-size: var(--label-font-size);
+        font-weight: 600;
+        margin-bottom: 15px;
+        justify-self: center;
+        align-self: center;
+        margin: auto;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19),
+          0 3px 3px rgba(0, 0, 0, 0.23);
+      }
+
+      #submit-button-div #submit:hover {
+        animation-name: invert-colors;
+        animation-duration: 500ms;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes invert-colors {
+        100% {
+          background-color: rgb(49, 17, 8);
+          color: rgb(214, 213, 213);
+          border: 2px solid rgb(214, 213, 213);
+          box-shadow: none;
+        }
+      }
+
+      footer {
+        padding: auto;
+        background-color: rgb(49, 17, 8);
+        color: rgb(214, 213, 213);
+        padding-bottom: 15px;
+      }
+
+      footer small {
+        text-align: center;
+        font-size: var(--footer-font-size);
+        font-weight: 200;
+        font-style: oblique;
+        margin: 20px;
+      }
+
+      @media (min-width: 1600px) {
+        #form-container {
+          max-width: 40vw;
+          font-size: 22px;
+          --header-font-size: 40px;
+          --title-font-size: 30px;
+          --label-font-size: 24px;
+          --footer-font-size: 18px;
+        }
+
+        textarea {
+          border-radius: 2%;
+        }
+      }
+
+      @media (max-width: 375px) {
+        #form-container {
+          font-size: 14px;
+          --header-font-size: 28px;
+          --title-font-size: 20px;
+          --label-font-size: 15px;
+          --footer-font-size: 10px;
+        }
+
+        /* input,
+        select,
+        option,
+        textarea {
+          font-size: 12px;
+        } */
+
+        #survey-form section {
+          padding: 10px;
+        }
+
+        #form-container header {
+          padding: 10px;
+        }
+
+        #submit-button-div #submit {
+          padding: 3px 10px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        #form-container {
+          font-size: 18px;
+          --header-font-size: 36px;
+          --title-font-size: 28px;
+          --label-font-size: 22px;
+          --footer-font-size: 16px;
+        }
+      }
+    </style>
+
+    <title>fcc survey</title>
+  </head>
+  <body id="main">
+    <div id="form-container">
+      <header>
+        <h1 id="title">Hi, do you read?</h1>
+        <p id="description">
+          The purpose of this survey is to discover common reading habits.
+          Please follow the instructions and use the form appropriately.
+        </p>
+      </header>
+
+      <form action="" id="survey-form">
+        <section id="personal-info">
+          <div class="section-title">
+            <hr />
+            <h2>Personal information</h2>
+            <hr />
+          </div>
+
+          <div class="section-fields">
+            <div class="form-field" id="name-field">
+              <label for="name" id="name-label">Name:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="e.g Dylan Jacob"
+              />
+            </div>
+
+            <div class="form-field" id="email-field">
+              <label for="email" id="email-label">Email:</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="e.g dylanj@books.com"
+              />
+            </div>
+
+            <div class="form-field" id="age-field">
+              <label for="number" id="number-label">Age:</label>
+              <input
+                type="number"
+                name="number"
+                id="number"
+                min="5"
+                max="200"
+                placeholder="e.g 21"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section id="reading-habits">
+          <div class="section-title">
+            <hr />
+            <h2>Reading habits</h2>
+            <hr />
+          </div>
+
+          <div class="section-fields">
+            <div class="form-field" id="dropdown-field">
+              <label for="dropdown" id="dropdown-label">Source:</label>
+              <select name="stack" id="dropdown">
+                <option value="" class="placeholders" disabled selected>
+                  <!-- how to give this the placeholder text color-->
+                  What do you mostly read from?
+                </option>
+                <option value="web">Online (blogs etc.)</option>
+                <option value="game">Offline (PDFs)</option>
+                <option value="cloud">Text books</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <fieldset class="radios">
+                <legend>How often do you read?</legend>
+                <div class="all-set">
+                  <span class="each-set">
+                    <input type="radio" name="experience" id="one" />
+                    <label for="one">Daily</label>
+                  </span>
+                  <span class="each-set">
+                    <input type="radio" name="experience" id="three" />
+                    <label for="three">Weekly</label>
+                  </span>
+                  <span class="each-set">
+                    <input type="radio" name="experience" id="five" />
+                    <label for="five">Sometimes within the month</label>
+                  </span>
+                  <span class="each-set">
+                    <input type="radio" name="experience" id="more" />
+                    <label for="more">Once in a while</label>
+                  </span>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="form-field">
+              <fieldset class="checkboxes">
+                <legend>What books are you more interested in?</legend>
+                <div class="all-set">
+                  <span class="each-set">
+                    <input
+                      type="checkbox"
+                      name="comic"
+                      value="comic"
+                      id="comic"
+                    />
+                    <label for="comic">Comic</label>
+                  </span>
+                  <span class="each-set">
+                    <input
+                      type="checkbox"
+                      name="fiction"
+                      value="fiction"
+                      id="fiction"
+                    />
+                    <label for="fiction">Fiction</label>
+                  </span>
+                  <span class="each-set">
+                    <input
+                      type="checkbox"
+                      name="romance"
+                      value="romance"
+                      id="romance"
+                    />
+                    <label for="romance">Romance</label>
+                  </span>
+                  <span class="each-set">
+                    <input type="checkbox" name="Tech" value="Tech" id="Tech" />
+                    <label for="Tech">Tech</label>
+                  </span>
+                  <span class="each-set">
+                    <input
+                      type="checkbox"
+                      name="manga"
+                      value="manga"
+                      id="manga"
+                    />
+                    <label for="manga">Manga</label>
+                  </span>
+                  <span class="each-set">
+                    <input
+                      type="checkbox"
+                      name="motivational"
+                      value="motivational"
+                      id="motivational"
+                    />
+                    <label for="motivational">Motivational</label>
+                  </span>
+                  <span class="each-set">
+                    <input
+                      type="checkbox"
+                      name="ancient"
+                      value="ancient"
+                      id="ancient"
+                    />
+                    <label for="ancient">Ancient</label>
+                  </span>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="more-info" id="more-info-label"
+              >Talk about your favorite book:</label
+            >
+            <textarea
+              name="more-info"
+              id="more-info"
+              cols="30"
+              rows="4"
+              placeholder="A title and a single-sentence description"
+            ></textarea>
+          </div>
+        </section>
+
+        <div class="form-field" id="submit-button-div">
+          <button type="submit" id="submit">Submit</button>
+        </div>
+      </form>
+
+      <footer><small>x - 2020</small></footer>
+    </div>
+  </body>
+</html>

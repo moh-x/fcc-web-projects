@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+    <script>
+      // !! IMPORTANT README:
+
+      // You may add additional external JS and CSS as needed to complete the project, however the current external resource MUST remain in place for the tests to work. BABEL must also be left in place.
+
+      /***********
+              INSTRUCTIONS:
+                - Select the project you would
+                  like to complete from the dropdown
+                  menu.
+                - Click the "RUN TESTS" button to
+                  run the tests against the blank
+                  pen.
+                - Click the "TESTS" button to see
+                  the individual test cases.
+                  (should all be failing at first)
+                - Start coding! As you fulfill each
+                  test case, you will see them go
+                  from red to green.
+                - As you start to build out your
+                  project, when tests are failing,
+                  you should get helpful errors
+                  along the way!
+                  ************/
+
+      // PLEASE NOTE: Adding global style rules using the * selector, or by adding rules to body {..} or html {..}, or to all elements within body or html, i.e. h1 {..}, has the potential to pollute the test suite's CSS. Try adding: * { color: red }, for a quick example!
+
+      // Once you have read the above messages, you can delete all comments.
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Parisienne&display=swap');
+
+      /* * {
+        border: .5px solid hotpink;
+      } */
+
+      * {
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      
+      #body {
+        font-family: 'Cormorant Garamond', serif;
+        --cover-image: url(https://res.cloudinary.com/moh-x/image/upload/v1610408818/fcc/aprilia/TUONOV4X_cover_mobile_cvilww.jpg);
+      }
+
+      #header {
+        z-index: 2;
+        color: white;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        width: 100%;
+        height: auto;
+        padding: .1rem 0px;
+
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+          "logo bars"
+          "nav nav";
+        align-items: center;
+
+        background-color: black;
+        opacity: 0.9;
+        box-shadow: 0 1px 20px rgba(14, 13, 13, 0.19),
+          0 0px 6px rgba(15, 15, 15, 0.23);
+        backdrop-filter: blur();
+      }
+
+      #header-img {
+        grid-area: logo;
+        width: 4rem;
+        max-width: 23%;
+        height: auto;
+        line-height: 0px;
+      }
+
+      #hamburger {
+        grid-area: bars;
+        width: 1.5em;
+        height: auto;
+        margin: 0px .5em;
+        line-height: 0px;
+      }
+
+      #nav-bar {
+        grid-area: nav;
+        visibility: hidden;
+        display: none;
+      }
+
+      #nav-toggle {
+        display: none;
+        visibility: hidden;
+      }
+
+      #nav-toggle:checked + nav {
+        padding: .5em 0;
+        visibility: visible;
+        display: block;
+        border-top: .5px dashed white;
+        margin: 0px 1em;
+      }
+
+      #nav-bar ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+        margin-block-start: 0em;
+        margin-block-end: 0px;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: white;
+      }
+
+      .nav-link li {
+        font-weight: bold;
+      }
+
+      #fullscreen-cover {
+        width: auto;
+        min-height: 100vh;
+        background-image: var(--cover-image);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgb(31, 30, 30);
+      }
+
+      section {
+        margin-top: 3rem;
+      }
+
+      section header {
+        font-family: 'Girassol', cursive;
+        margin: 1em;
+        text-align: center;
+        border-bottom: .5px dashed black;
+      }
+
+      #bikes img {
+        width: 100%;
+      }
+
+      figcaption {
+        font-family: 'Parisienne', cursive;
+        text-align: right;
+        padding: 0 1em;
+      }
+
+      #video-section {
+        padding: 0 .3rem;
+      }
+
+      #video {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        padding-bottom: 56.25%;
+      }
+
+      #video > iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #contact-area {
+        background-color: black;
+        color: white;
+        display: flex;
+        text-align: center;
+        padding: 1rem .5rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-field {
+        margin: 1em;
+      }
+
+      .form-field input {
+        border-radius: 0.3em;
+        padding: .3em .6em;
+      }
+
+      #email {
+        width: 70%;
+        text-align: center;
+        font-size: 1em;
+        margin: .5em;
+        background-color: black;
+        color: white;
+        border: none;
+        border-bottom: 2px solid red;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: groove;
+      }
+
+      #email:focus {
+        outline: none;
+      }
+
+      label {
+        font-family: 'DM Serif Text', serif;
+      }
+
+      #submit {
+        box-shadow:inset 0px 34px 0px -15px rgb(209, 11, 11);
+        background-color:rgb(172, 11, 11);
+        border:.5px solid #fcfbfa;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family: 'DM Serif Text', serif;
+        font-size:15px;
+        font-weight:bold;
+        padding:9px 23px;
+        text-decoration:none;
+        text-shadow:0px -1px 0px #7a2a1d;
+      }
+
+      #submit:hover {
+        background-color:#b34332;
+      }
+
+      #submit:active {
+        position:relative;
+	      top:1px;
+      }
+
+
+      @media (min-aspect-ratio: 1/1) {
+        #body {
+          --cover-image: url(https://res.cloudinary.com/moh-x/image/upload/v1610408680/fcc/aprilia/MotoGP_Gallery_01_1920x800_we4myv.jpg);
+        }
+      }
+
+      @media (min-aspect-ratio: 10/7) {
+        #body {
+          --cover-image: url(https://res.cloudinary.com/moh-x/image/upload/v1610248867/fcc/aprilia/Gallery_1920x1080_composizione_colori_text_6_fhpxkp.webp);
+        }
+      }
+    </style>
+
+    <title>Product landing page</title>
+  </head>
+  <body id="body">
+    <header id="header">
+      <img
+        src="https://res.cloudinary.com/moh-x/image/upload/v1610234269/fcc/aprilia/ApriliaWhite_fdy6r5.webp"
+        alt="aprilia logo"
+        id="header-img"
+      />
+      <!-- <h1 id="logo">Aprilia</h1> -->
+      <!-- logo, maybe -->
+
+      <label for="nav-toggle" id="menu">
+        <img id="hamburger"
+          src="https://res.cloudinary.com/moh-x/image/upload/v1610235741/fcc/aprilia/menu_ay606d.svg"
+          alt="menu icon"
+        />
+      </label>
+
+      <input type="checkbox" name="nav-toggle" id="nav-toggle">
+
+      <nav id="nav-bar">
+        <ul>
+          <a href="#bikes" class="nav-link"><li>Our Bikes</li></a>
+          <a href="#video-section" class="nav-link"><li>Watch Design</li></a>
+          <a href="#contact-area" class="nav-link"><li>Reach Us</li></a>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div id="fullscreen-cover"></div>
+
+      <div id="features">
+        <div class="feature"></div>
+        <div class="feature"></div>
+        <div class="feature"></div>
+      </div>
+
+      <section id="bikes">
+        <header>
+          <h2>Discover our Roadstars</h2>
+        </header>
+
+        <div class="bike">
+          <figure>
+            <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/Tuono_1500x1000_udtceo.webp"
+             alt="" srcset="">
+            <figcaption>The Tuono Speedster</figcaption>
+          </figure>
+        </div>
+        <div class="bike">
+          <figure>
+            <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/RSV4-1000-RR_1500x1000_iosvii.webp"
+             alt="" srcset="">
+            <figcaption>The Tuono Speedster</figcaption>
+          </figure>
+        </div>
+        <div class="bike">
+          <figure>
+            <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/ap6176400ebk04-01-s_ivzbxu.webp"
+             alt="" srcset="">
+            <figcaption>The Tuono Speedster</figcaption>
+          </figure>
+        </div>
+        <div class="bike">
+          <figure>
+            <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/ap6166000ebj01-01-s_wbq795.webp"
+             alt="" srcset="">
+            <figcaption>The Tuono Speedster</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- <section id="video-section">
+        <header>
+          <h2>The Design Process</h2>
+        </header>
+
+        An embedded product video
+        <div id="video">
+          <iframe width="100%" height="100%"
+          src="https://www.youtube.com/embed/JdydS9Soi6E" 
+          title="YouTube video player" frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+        </div>
+      </section> -->
+
+      <section id="contact-area">
+
+        <header>
+          <h3>Send us a request!</h3>
+        </header>
+
+        <form action="" id="form">
+
+          <div id="email-field" class="form-field">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="e.g anyone@anywhere.com"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <input type="submit" value="Submit" id="submit" />
+          </div>
+
+        </form>
+
+      </section>
+
+    </main>
+  </body>
+</html>

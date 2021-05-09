@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xodeeq</title>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Fredericka+the+Great&display=swap');
+
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    #body {
+      --page-side-padding: 8px;
+    }
+
+    #full-page {
+      --link-color: rgb(196, 248, 6);
+      font-family: 'Fredericka the Great', cursive;
+      background-image: url(https://res.cloudinary.com/moh-x/image/upload/v1610509324/fcc/portfolio/itl.cat_wallbase-wallpaper_952362_lxyjnc.jpg);
+      background-color: rgb(29, 29, 29);
+      color: whitesmoke;
+      padding: .5rem var(--page-side-padding, .5rem);
+    }
+
+    #navbar {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      left: 0px;
+      background:rgba(253, 253, 253, 0.2);
+      backdrop-filter: blur(2px);
+    }
+
+    #navbar div {
+      width: 100%;
+    }
+
+    #navbar ul {
+      padding: .5rem var(--page-side-padding, .5rem);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #navbar ul a {
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    #navbar ul li {
+      list-style-type: none;
+    }
+
+    section {
+      margin: 2rem 0px;
+    }
+
+    #welcome-section {
+      /* font-family: 'Big Shoulders Stencil Text', cursive; */
+      /* min-height: 92vh; */
+      border: .5px dashed whitesmoke;
+      margin-bottom: 5rem;
+    }
+
+    #welcome-section > div, blockquote {
+      padding: 1em;
+    }
+
+    #about-me {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #my-name {
+      margin-top: 1em;
+      line-height: 0;
+    }
+
+    blockquote {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    blockquote hr {
+      width: 70%;
+      margin: 1em auto;
+    }
+
+    #my-avatar {
+      max-width: 40%;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 1em;
+    }
+
+    #icons {
+      display: flex;
+      justify-content: center;
+    }
+
+    #icons a {
+      display: flex;
+      text-decoration: none;
+      justify-content: center;
+    }
+
+    .icon {
+      width: 50%;
+      max-width: 50%;
+      height: auto;
+      filter: invert(100%) sepia(0%) saturate(4201%) hue-rotate(180deg) brightness(113%) contrast(92%);
+    }
+
+    .icon:hover {
+      transform: scale(1.05);
+    }
+
+    .links {
+      text-decoration: none;
+      color: var(--link-color, aquamarine);
+    }
+
+    .links:hover {
+      color:aquamarine;
+    }
+
+    #intro {
+      margin: 2em 0;
+    }
+
+    #projects {
+      padding: 0rem .2rem;
+      /* background-color: whitesmoke;
+      color: rgb(31, 32, 32); */
+    }
+
+    .project {
+      margin-top: 2rem;
+    }
+
+    .project-title {
+      margin: 1em 0px;
+    }
+
+    .project-tile {
+      border: .5px dashed whitesmoke;
+    }
+
+    #projects > header {
+      margin: 1em 0;
+      text-align: center;
+    }
+
+    #footer {
+      text-align: right;
+      margin: 2rem 0px 1.5rem 0px;
+    }
+
+    @media (min-width: 400px) {
+      #body {
+        --page-side-padding: 16px;
+      }
+    }
+
+    @media (min-width: 700px) {
+      #body {
+        --page-side-padding: 80px;
+      }
+
+      #projects {
+        margin-top: 3rem;
+      }
+
+      .project {
+        margin-top: 3rem;
+      }
+
+      .icon {
+        width: 30%;
+        max-width: 30%;
+      }
+
+      blockquote {
+        margin-bottom: 2rem;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      #body {
+        --page-side-padding: 160px;
+      }
+
+      #full-page {
+        font-size: 24px;
+      }
+
+      #my-avatar {
+        max-width: 30%;
+        height: auto;
+      }
+
+      section {
+        margin-top: 3rem;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      #body {
+        --page-side-padding: 320px;
+      }
+
+      #full-page {
+        padding: 1rem var(--page-side-padding, 320px);
+      }
+
+      #my-avatar {
+        max-width: 30%;
+        height: auto;
+      }
+    }
+
+    @media (min-width: 2000px) {
+      #body {
+        --page-side-padding: 480px;
+      }
+
+      #full-page {
+        font-size: 2rem;
+      }
+
+      #my-avatar {
+        max-width: 20%;
+        height: auto;
+      }
+
+      #navbar ul {
+        padding: .5rem 30rem;
+      }
+
+      #projects > header {
+        grid-area: header;
+      }
+
+      #project1 {
+        grid-area: project1;
+      }
+
+      #project2 {
+        grid-area: project2;
+      }
+
+      #projects {
+        display: grid;
+        grid-template-areas: 
+          "header header"
+          "project1 project2";
+        gap: 0px 10rem;
+      }
+
+      .project {
+        margin-top: 0px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body id="body">
+
+  <div id="full-page">
+    <nav id="navbar">
+      <ul>
+        <a href="#about-me" class="links" id="link1"><li>About Me</li></a>
+        <a href="#projects" class="links" id="link2"><li>My Projects</li></a>
+      </ul>
+    </nav>
+
+    <section id="welcome-section">
+
+      <div id="about-me">
+
+        <img src="https://res.cloudinary.com/moh-x/image/upload/v1618542907/fcc/portfolio/AvatarMaker_ipxz90.svg"
+        alt="Babatunde's avatar" id="my-avatar">
+
+        <div id="my-info">
+          <p>
+            <h1 id="my-name">Babatunde Adenowo</h1>
+            <br>Student of Computer Science |
+             <a href="https://www.uopeople.edu/"
+              rel="noopener noreferrer" target="_blank"
+              class="links"> UoPeople</a>
+            <br>Supporter |
+             <a href="https://www.manutd.com/"
+              rel="noopener noreferrer" target="_blank"
+              class="links"> Manchester United</a>
+          </p>
+        </div>
+
+        <div id="intro">
+          <p>
+            Reader of official documentations due to a knack for
+             the best practices. Jack of many technologies.
+             Hope the world becomes one problem short as
+              he checks another one off his to-do list.
+          </p>
+        </div>
+  
+        <h3>Favorite Quote:</h3>
+        <blockquote cite="">
+          "Sometimes, it is the people no one can imagine
+          anything of who do the things no one can imagine."
+          <hr>
+          <cite>- Sir Alan Turing</cite>
+        </blockquote>
+
+        <div id="icons">
+          <a href="https://github.com/moh-x" rel="noopener noreferrer" target="_blank">
+            <img id="profile-link" class="icon" src="https://res.cloudinary.com/moh-x/image/upload/v1618542907/fcc/portfolio/github_hjnk3f.svg"
+             alt="link to my github">
+          </a>
+          <a href="https://www.linkedin.com/in/babatunde-adenowo-8895a41a2/" rel="noopener noreferrer" target="_blank">
+            <img class="icon" src="https://res.cloudinary.com/moh-x/image/upload/v1618542907/fcc/portfolio/linkedin2_lrpppu.svg"
+             alt="link to my linkedin">
+          </a>
+          <a href="https://twitter.com/mo_xodeeq" rel="noopener noreferrer" target="_blank">
+            <img class="icon" src="https://res.cloudinary.com/moh-x/image/upload/v1618542909/fcc/portfolio/twitter_czwkud.svg"
+             alt="link to my twitter">
+          </a>
+          <a href="#" rel="noopener noreferrer" target="_blank">
+            <img class="icon" src="https://res.cloudinary.com/moh-x/image/upload/v1618542907/fcc/portfolio/line_udcz7q.svg"
+             alt="link to my line">
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="projects">
+      <header><h3>Past Projects</h3></header>
+
+      <div class="project" id="project1">
+        <p class="project-title">A technical documentation</p>
+        <div class="project-tile">
+          <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result"
+           data-user="moh-x" data-slug-hash="xxOmBmJ"
+            style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+             data-pen-title="xxOmBmJ">
+            <span>See the Pen <a href="https://codepen.io/moh-x/pen/xxOmBmJ">
+            xxOmBmJ</a> by moh-x (<a href="https://codepen.io/moh-x">@moh-x</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+          <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+      </div>
+
+      <div class="project" id="project2">
+        <p class="project-title">A tribute page</p>
+        <div class="project-tile">
+          <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result"
+           data-user="moh-x" data-slug-hash="jOqdWZW" 
+           style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" 
+           data-pen-title="Fork Me! FCC: Test Suite Template">
+            <span>See the Pen <a href="https://codepen.io/moh-x/pen/jOqdWZW">
+            Alan Turing's tribute page.</a> by moh-x (<a href="https://codepen.io/moh-x">@moh-x</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+          <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+      </div>
+    </section>
+    
+    <a href="http://" target="_blank" rel="noopener noreferrer" id="profile-link"></a>
+
+    <p id="footer">
+      &copy xodeeq 2021
+    </p>
+  </div>
+</body>
+</html>
