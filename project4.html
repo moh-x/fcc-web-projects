@@ -7,24 +7,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 
-  <!-- <script>
-    $("pre[name='pre']").each(function () {
-        var html = $(this).html()
-        var blankLen = (html.split('\n')[0].match(/^\s+/)[0]).length
-        $(this).html($.trim(html.replace(eval("/^ {" + blankLen + "}/gm"), "")))
-    })
-  </script> -->
-
   <style>
     /* * {
       border: 1px solid hotpink;
     } */
 
     #full-page {
-      --navbar-width: 20%;
-      --primary-bg-color:  rgb(31, 30, 30);
+      --navbar-width: 25%;
+      --primary-bg-color:  rgb(30, 30, 30);
       --primary-color: floralwhite;
       --secondary-color: aliceblue;
+      --hamburger-filter: invert(100%) sepia(10%) saturate(2118%) hue-rotate(315deg) brightness(113%) contrast(108%);
       --secondary-bg-color: darkslategrey;
       --separation-line-color: white;
       --main-doc-side-padding: 4rem;
@@ -113,18 +106,9 @@
       margin: 0px auto;
     }
 
-    /* .main-section {
-      padding-left: 0.1em;
-    } */
-
     .topic {
-      /* text-transform: uppercase;
-      text-decoration: underline;
-      text-align: center; */
       padding: 0.1rem var(--main-doc-side-padding, 4rem);
       padding-top: 20px;
-      /* font-family: 'Press Start 2P', cursive;
-      font-size: 0.8em; */
     }
 
     .sub-section {
@@ -159,6 +143,11 @@
       max-width: 98%;
     }
 
+    #doc-footer {
+      padding: 1em var(--main-doc-side-padding, 4rem);
+      border: 1px dashed var(--separation-line-color);
+    }
+
     #mode-switch {
       display: none;
       visibility: hidden;
@@ -166,10 +155,11 @@
 
     #mode-switch:checked ~ #full-page {
       --primary-bg-color: floralwhite;
-      --primary-color: rgb(31, 30, 30);
+      --primary-color: rgb(30, 30, 30);
       --secondary-color: aliceblue;
       --secondary-bg-color: darkslategrey;
       --separation-line-color: rgb(102, 101, 101);
+      --hamburger-filter: invert(16%) sepia(0%) saturate(0%) hue-rotate(151deg) brightness(99%) contrast(111%);
     }
 
     #mode-switch:checked ~ #full-page #navbar {
@@ -279,16 +269,14 @@
 
       #jumper {
         z-index: 5;
-        background-color: blanchedalmond;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 2.5em;
+        height: auto;
         visibility: visible;
         display: block;
         position: fixed;
         top: 2rem;
         right: 2rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
+        filter: var(--hamburger-filter);
       }
 
       #switch {
@@ -307,16 +295,6 @@
       #doc-title ~ hr {
         width: 92%;
       }
-
-      #jumper {
-        width: 1rem;
-        height: 1rem;
-      }
-
-      /* #switch {
-        right: 24px;
-        bottom: 16px;
-      } */
 
       .example code pre {
         font-size: 0.95em;
@@ -337,13 +315,6 @@
         top: 2rem;
         right: 1rem;
       }
-
-      /* #switch {
-        right: 16px;
-        bottom: 16px;
-        height: 24px;
-        width: 24px;
-      } */
 
       .example code pre {
         font-size: 0.85em;
@@ -399,11 +370,12 @@
 <div id="full-page">
   <nav id="navbar">
     <header id="doc-title">
-      <h1>Python Cheat Doc</h1>
-      <p>Beginner's guide to python</p>
+      <h1>Python Sheet</h1>
+      <p>Introductory Python</p>
 
       <label for="drop-table">
-        <div id="jumper"></div>
+        <img src="https://res.cloudinary.com/moh-x/image/upload/v1624332729/fcc/technical_doc/9851132801553239378_yy9adk.svg" 
+        alt="" id="jumper">
       </label>
     </header>
 
@@ -413,7 +385,7 @@
 
     <div id="content-table">
       
-      <a href="#Hello_World!" class="nav-link"><div class="jump-to">
+      <a href="#Basics_-_Hello_World!" class="nav-link"><div class="jump-to">
         Basics - Hello World!
       </div></a>
 
@@ -461,8 +433,8 @@
         Django
       </div></a>
 
-      <a href="#Django_Part_2" class="nav-link"><div class="jump-to">
-        Django, Part2
+      <a href="#Django,_Part_2" class="nav-link"><div class="jump-to">
+        Django, Part 2
       </div></a>
       
     </div>
@@ -477,7 +449,7 @@
     <!-- SECTION I -->
 
 
-    <section class="main-section" id="Hello_World!">
+    <section class="main-section" id="Basics_-_Hello_World!">
       <header class="topic"><h2>Basics - Hello World!</h2></header>
 
       <section class="sub-section">
@@ -1020,8 +992,18 @@
         <header class="sub-topic"><h3 >What are lists?</h3></header>
 
         <p>
-          A list stores a series of items in a particular order. Lists allow you to store sets of information in one place, whether you have just a few items or millions of items. Lists are one of Python's most powerful features readily accessible to new programmers, and they tie together many important concepts in programming.
+          A list stores a series of items in a particular order. Lists allow you to store sets of information in one place, 
+          whether you have just a few items or millions of items. Lists are one of Python's most powerful features readily 
+          accessible to new programmers, and they tie together many important concepts in programming. A list in the real 
+          world could look like this:
         </p>
+        <ul>
+          <li>val</li>
+          <li>bob</li>
+          <li>mia</li>
+          <li>ron</li>
+          <li>ned</li>
+        </ul>
       </section>
 
       <section class="sub-section">
@@ -6209,7 +6191,7 @@
 
     <!-- SECTION XIII -->
 
-    <section class="main-section" id="Django_Part_2">
+    <section class="main-section" id="Django,_Part_2">
 
       <header class="topic"><h2>Django, Part 2</h2></header>
 
@@ -6650,20 +6632,26 @@
 
     </section>
 
+    <footer id="doc-footer">
+      <p>Made by <a href="http://github.com/moh-x" target="_blank" rel="noopener noreferrer">xodeeq</a> from
+         <a href="http://ehmatthes.github.io/pcc_2e/" target="_blank" rel="noopener noreferrer">Python Cheat Sheet</a> 
+         by Eric Matthes</p>
+    </footer>
+
   </main>
 
 </div>
 
 
 <label for="mode-switch">
-  <div id="switch"></div>
+  <div id="switch">
+    <img src="https://res.cloudinary.com/moh-x/image/upload/v1624332489/fcc/technical_doc/11956867901548329959_fujefd.svg" alt="">
+  </div>
 </label>
 
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
 </body>
-
-
-
-
 
 </html>
 

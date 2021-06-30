@@ -4,70 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
-    <script>
-      // !! IMPORTANT README:
-
-      // You may add additional external JS and CSS as needed to complete the project, however the current external resource MUST remain in place for the tests to work. BABEL must also be left in place.
-
-      /***********
-      INSTRUCTIONS:
-        - Select the project you would
-          like to complete from the dropdown
-          menu.
-        - Click the "RUN TESTS" button to
-          run the tests against the blank
-          pen.
-        - Click the "TESTS" button to see
-          the individual test cases.
-          (should all be failing at first)
-        - Start coding! As you fulfill each
-          test case, you will see them go
-          from red to green.
-        - As you start to build out your
-          project, when tests are failing,
-          you should get helpful errors
-          along the way!
-          ************/
-
-      // PLEASE NOTE: Adding global style rules using the * selector, or by adding rules to body {..} or html {..}, or to all elements within body or html, i.e. h1 {..}, has the potential to pollute the test suite's CSS. Try adding: * { color: red }, for a quick example!
-
-      // Once you have read the above messages, you can delete all comments.
-    </script>
-
     <link
       href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
       rel="stylesheet"
     />
 
     <style>
-      /* * {
-        border: 1px solid hotpink;
-      } */
 
       #the-body {
         margin: 0px;
       }
 
       #main {
-        /* --navlink-font-size: 32px;
-        --subject-font-size: 24px;
-        --header-font-size: 18px;
-        --caption-font-size: 14px; */
-
         font-family: "Cutive Mono", monospace;
         text-align: center;
         background-color: rgb(238, 236, 236);
         color: #636161;
         scroll-behavior: smooth;
-        /* padding: 30px;
-        margin-top: 20px;
-        margin-bottom: 20px; */
       }
-
-      /* p {
-        font-size: 1.1em;
-      } */
 
       hr {
         width: 85%;
@@ -81,26 +35,6 @@
       a:hover {
         color: hotpink;
       }
-
-      /* #navbar {
-        height: auto;
-        margin-bottom: 0px;
-        display: flex;
-        justify-content: flex-end;
-      }
-
-      #navbar ul {
-        list-style: none;
-        display: inline-flex;
-        margin-top: 2px;
-        margin-bottom: 2px;
-      }
-
-      #navbar ul li {
-        padding: 0px 20px;
-        font-weight: 800;
-        font-size: 1em;
-      } */
 
       #title {
         padding: 10px;
@@ -121,9 +55,9 @@
         margin-bottom: 5px;
       }
 
-      /* #img-div {
-          padding: 5px;
-        } */
+      img {
+        max-width: 100%;
+      }
 
       #img-div {
         margin-right: auto;
@@ -332,18 +266,12 @@
 
         #about-div {
           display: flex;
-          justify-items: center;
+          flex-direction: column;
+          align-items: center;
         }
 
         #portrait-photo {
-          display: block;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          background: url(https://res.cloudinary.com/moh-x/image/upload/v1603249927/fcc/alan_turing/full_alan_thvdbc.jpg) no-repeat;
-          width: 25%; /* Width of new image */
-          height: auto; /* Height of new image */
-          padding-left: 25%; /* Equal to width of new image */
-          border-radius: none;
+          width: 60%
         }
 
         #full-photo {
@@ -419,7 +347,7 @@
         }
 
         footer {
-          padding: 1em;
+          padding: 1em 0 3em 0;
         }
       }
 
@@ -437,76 +365,11 @@
         }
 
         footer {
-          padding: 1em 0.5em;
+          padding: 1em 0.5em 3em 0.5em;
         }
       }
 
-      /* @media (max-width: 1500px) {
-        #img-div {
-          width: 90%;
-        }
 
-        #tribute-info {
-          width: 90%;
-        }
-      }
-
-      @media (max-width: 800px) {
-        || #main {
-          background-color: red;
-        }
-
-        * {
-          border: 1px solid green;
-        } ||
-
-        img {
-          width: 100%;
-          margin-left: 0px;
-          margin-right: 0px;
-        }
-
-        .card {
-          width: 30%;
-        }
-      }
-
-      @media (max-width: 600px) {
-        #img-div {
-          width: 98%;
-          margin-top: 2px;
-        }
-
-        #image {
-          width: 99%;
-        }
-
-        #img-caption {
-          font-size: 10px;
-        }
-
-        #navbar ul li {
-          padding: 0px 15px;
-          font-weight: 600;
-          font-size: 15px;
-        }
-
-        #tribute-info section .cards {
-          || flex-direction: column;
-          justify-content: flex-start;
-          align-items: center; ||
-          margin-top: 15px;
-          margin-bottom: 15px;
-        }
-
-        .card {
-          width: 75%;
-        }
-
-        footer {
-          padding: 10px;
-        }
-      } */
     </style>
 
     <title>Alan's Tribute</title>
@@ -515,12 +378,6 @@
   <body id="the-body">
     <main id="main">
       <header id="title">
-        <!-- <nav id="navbar">
-          <ul>
-            <li><a href="#facts-div">Facts</a></li>
-            <li><a href="#quotes-div">Quotes</a></li>
-          </ul>
-        </nav> -->
         <h1>Alan Turing</h1>
         <p><strong>Father of modern computing</strong></p>
       </header>
@@ -545,7 +402,7 @@
             alt="a portrait photo of Sir Alan"
             id="portrait-photo"
           />
-          <!-- <img src="https://res.cloudinary.com/moh-x/image/upload/v1603249927/fcc/alan_turing/full_alan_thvdbc.jpg" alt="" class="full-photo"> -->
+
           <article>
             <h2>About Alan</h2>
             <p>
@@ -663,87 +520,6 @@
 
         <hr>
 
-        <!-- <section id="facts-div" accesskey="f">
-          <header>
-            <h2>Some facts about Alan Mathison Turing</h2>
-          </header>
-          <div class="cards">
-            <div class="fact">
-              <div class="fact-icon"></div>
-              <div class="card long-card">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
-                  nesciunt alias adipisci error. Nesciunt mollitia ad maxime
-                  sapiente odio ut placeat, ipsa molestiae. Quod, dolore!
-                  Voluptatem excepturi esse dignissimos iure?
-                </p>
-              </div>
-            </div>
-
-            <div class="fact">
-              <div class="fact-icon"></div>
-              <div class="card long-card">
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Accusamus quia consequuntur nulla rem atque sint pariatur!
-                  Eaque, ad itaque. Delectus dolorum error voluptas ipsum animi
-                  provident, et quae sit molestias.
-                </p>
-              </div>
-            </div>
-
-            <div class="fact">
-              <div class="fact-icon"></div>
-              <div class="card long-card">
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Placeat eaque hic quod ipsam sed earum, eos harum eius
-                  nesciunt. Labore nulla doloribus accusamus laudantium
-                  reiciendis molestias amet, commodi cumque nesciunt.
-                </p>
-              </div>
-            </div>
-
-            <div class="fact">
-              <div class="fact-icon"></div>
-              <div class="card long-card">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
-                  nesciunt alias adipisci error. Nesciunt mollitia ad maxime
-                  sapiente odio ut placeat, ipsa molestiae. Quod, dolore!
-                  Voluptatem excepturi esse dignissimos iure?
-                </p>
-              </div>
-            </div>
-
-            <div class="fact">
-              <div class="fact-icon"></div>
-              <div class="card long-card">
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Accusamus quia consequuntur nulla rem atque sint pariatur!
-                  Eaque, ad itaque. Delectus dolorum error voluptas ipsum animi
-                  provident, et quae sit molestias.
-                </p>
-              </div>
-            </div>
-
-            <div class="fact">
-              <div class="fact-icon"></div>
-              <div class="card long-card">
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Placeat eaque hic quod ipsam sed earum, eos harum eius
-                  nesciunt. Labore nulla doloribus accusamus laudantium
-                  reiciendis molestias amet, commodi cumque nesciunt.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr /> -->
-
         <section id="quotes-div" accesskey="q">
           <header>
             <h2>Some of Alan Turing's quotes</h2>
@@ -787,5 +563,8 @@
         </p>
       </footer>
     </main>
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
   </body>
 </html>

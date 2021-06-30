@@ -4,37 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-    <script>
-      // !! IMPORTANT README:
-
-      // You may add additional external JS and CSS as needed to complete the project, however the current external resource MUST remain in place for the tests to work. BABEL must also be left in place.
-
-      /***********
-      INSTRUCTIONS:
-        - Select the project you would
-          like to complete from the dropdown
-          menu.
-        - Click the "RUN TESTS" button to
-          run the tests against the blank
-          pen.
-        - Click the "TESTS" button to see
-          the individual test cases.
-          (should all be failing at first)
-        - Start coding! As you fulfill each
-          test case, you will see them go
-          from red to green.
-        - As you start to build out your
-          project, when tests are failing,
-          you should get helpful errors
-          along the way!
-          ************/
-
-      // PLEASE NOTE: Adding global style rules using the * selector, or by adding rules to body {..} or html {..}, or to all elements within body or html, i.e. h1 {..}, has the potential to pollute the test suite's CSS. Try adding: * { color: red }, for a quick example!
-
-      // Once you have read the above messages, you can delete all comments.
-    </script>
-
     <link
       href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
       rel="stylesheet"
@@ -64,7 +33,7 @@
         max-width: 500px;
         height: auto;
         width: 100%;
-        margin: auto;
+        margin: 3rem auto;
         flex-direction: column;
         background-color: rgb(49, 17, 8);
         color: rgb(214, 213, 213);
@@ -110,10 +79,6 @@
         padding: 0.15em 0.4em;
         font-size: var(--input-font-size);
       }
-
-      /* .form-field {
-        margin: 20px;
-      } */
 
       .section-title {
         display: grid;
@@ -263,6 +228,10 @@
         animation-fill-mode: forwards;
       }
 
+      footer {
+        padding: 2rem 0px;
+      }
+
       @keyframes invert-colors {
         100% {
           background-color: rgb(49, 17, 8);
@@ -276,7 +245,6 @@
         padding: auto;
         background-color: rgb(49, 17, 8);
         color: rgb(214, 213, 213);
-        padding-bottom: 15px;
       }
 
       footer small {
@@ -302,6 +270,12 @@
         }
       }
 
+      @media (max-width: 500px) {
+        #form-container {
+          margin: 0 auto;
+        }
+      }
+
       @media (max-width: 375px) {
         #form-container {
           font-size: 14px;
@@ -310,13 +284,6 @@
           --label-font-size: 15px;
           --footer-font-size: 10px;
         }
-
-        /* input,
-        select,
-        option,
-        textarea {
-          font-size: 12px;
-        } */
 
         #survey-form section {
           padding: 10px;
@@ -344,6 +311,8 @@
 
     <title>fcc survey</title>
   </head>
+
+
   <body id="main">
     <div id="form-container">
       <header>
@@ -370,6 +339,7 @@
                 name="name"
                 id="name"
                 placeholder="e.g Dylan Jacob"
+                required
               />
             </div>
 
@@ -380,6 +350,7 @@
                 name="email"
                 id="email"
                 placeholder="e.g dylanj@books.com"
+                required
               />
             </div>
 
@@ -423,19 +394,19 @@
                 <legend>How often do you read?</legend>
                 <div class="all-set">
                   <span class="each-set">
-                    <input type="radio" name="experience" id="one" />
+                    <input type="radio" name="experience" value="one" id="one" />
                     <label for="one">Daily</label>
                   </span>
                   <span class="each-set">
-                    <input type="radio" name="experience" id="three" />
+                    <input type="radio" name="experience" value="three" id="three" />
                     <label for="three">Weekly</label>
                   </span>
                   <span class="each-set">
-                    <input type="radio" name="experience" id="five" />
+                    <input type="radio" name="experience" value="five" id="five" />
                     <label for="five">Sometimes within the month</label>
                   </span>
                   <span class="each-set">
-                    <input type="radio" name="experience" id="more" />
+                    <input type="radio" name="experience" value="more" id="more" />
                     <label for="more">Once in a while</label>
                   </span>
                 </div>
@@ -530,5 +501,10 @@
 
       <footer><small>x - 2020</small></footer>
     </div>
+
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    
   </body>
+  
 </html>

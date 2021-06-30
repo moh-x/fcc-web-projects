@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
     <script>
       // !! IMPORTANT README:
 
@@ -57,6 +56,8 @@
       #body {
         font-family: 'Cormorant Garamond', serif;
         --cover-image: url(https://res.cloudinary.com/moh-x/image/upload/v1610408818/fcc/aprilia/TUONOV4X_cover_mobile_cvilww.jpg);
+        --logo-width: 4rem;
+        --bikes-width: 100%;
       }
 
       #header {
@@ -87,9 +88,10 @@
 
       #header-img {
         grid-area: logo;
-        width: 4rem;
+        width: var(--logo-width, 4rem);
         max-width: 23%;
         height: auto;
+        margin: 0.3em 0px;
         line-height: 0px;
       }
 
@@ -141,7 +143,7 @@
       }
 
       #fullscreen-cover {
-        width: auto;
+        width: 100%;
         min-height: 100vh;
         background-image: var(--cover-image);
         background-position: center center;
@@ -162,11 +164,19 @@
       }
 
       #bikes img {
-        width: 100%;
+        width: var(--bikes-width, 100%);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #bikes img:hover {
+        transform: scale(1.01)
       }
 
       figcaption {
         font-family: 'Parisienne', cursive;
+        font-size: large;
         text-align: right;
         padding: 0 1em;
       }
@@ -175,14 +185,18 @@
         padding: 0 .3rem;
       }
 
-      #video {
+      #video-container {
         display: flex;
         justify-content: center;
         position: relative;
         padding-bottom: 56.25%;
       }
 
-      #video > iframe {
+      #video {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
         position: absolute;
         top: 0;
         left: 0;
@@ -263,17 +277,69 @@
       }
 
 
+      @media (min-width: 700px) {
+        #body {
+          --logo-width: 25rem;
+          --bikes-width: 90%;
+        }
+
+        #header {
+          grid-template-columns: auto 2fr;
+          grid-template-areas:
+            "logo nav";
+          align-items: center;
+          padding: 0px 1rem;
+        }
+
+        #hamburger {
+          display: none;
+          visibility: hidden;
+        }
+
+        #nav-bar {
+          grid-area: nav;
+          visibility: visible;
+          display: block;
+        }
+
+        #bikes {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        figcaption {
+          font-size: 2em;
+          text-align: right;
+          padding: 0 4em;
+        }
+
+        #video-section {
+          width: var(--bikes-width);
+          display: block;
+          margin: 0px auto;
+        }
+      }
+
+      
       @media (min-aspect-ratio: 1/1) {
         #body {
-          --cover-image: url(https://res.cloudinary.com/moh-x/image/upload/v1610408680/fcc/aprilia/MotoGP_Gallery_01_1920x800_we4myv.jpg);
+          --cover-image: url(https://res.cloudinary.com/moh-x/image/upload/v1610249391/fcc/aprilia/rs_gallery7_bp3m1r.webp)
         }
       }
 
       @media (min-aspect-ratio: 10/7) {
         #body {
+          --cover-image: url(https://res.cloudinary.com/moh-x/image/upload/v1610408680/fcc/aprilia/MotoGP_Gallery_01_1920x800_we4myv.jpg);
+        }
+      }
+
+      @media (min-aspect-ratio: 16/9) {
+        #body {
           --cover-image: url(https://res.cloudinary.com/moh-x/image/upload/v1610248867/fcc/aprilia/Gallery_1920x1080_composizione_colori_text_6_fhpxkp.webp);
         }
       }
+
     </style>
 
     <title>Product landing page</title>
@@ -309,61 +375,50 @@
     <main id="main">
       <div id="fullscreen-cover"></div>
 
-      <div id="features">
-        <div class="feature"></div>
-        <div class="feature"></div>
-        <div class="feature"></div>
-      </div>
-
       <section id="bikes">
         <header>
           <h2>Discover our Roadstars</h2>
         </header>
 
-        <div class="bike">
-          <figure>
-            <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/Tuono_1500x1000_udtceo.webp"
-             alt="" srcset="">
-            <figcaption>The Tuono Speedster</figcaption>
-          </figure>
-        </div>
-        <div class="bike">
-          <figure>
-            <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/RSV4-1000-RR_1500x1000_iosvii.webp"
-             alt="" srcset="">
-            <figcaption>The Tuono Speedster</figcaption>
-          </figure>
-        </div>
-        <div class="bike">
-          <figure>
-            <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/ap6176400ebk04-01-s_ivzbxu.webp"
-             alt="" srcset="">
-            <figcaption>The Tuono Speedster</figcaption>
-          </figure>
-        </div>
-        <div class="bike">
-          <figure>
-            <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/ap6166000ebj01-01-s_wbq795.webp"
-             alt="" srcset="">
-            <figcaption>The Tuono Speedster</figcaption>
-          </figure>
-        </div>
+        <figure class="bike">
+          <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/Tuono_1500x1000_udtceo.webp"
+           alt="" srcset="">
+          <figcaption>The Tuono Speedster</figcaption>
+        </figure>
+
+        <figure class="bike">
+          <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/RSV4-1000-RR_1500x1000_iosvii.webp"
+           alt="" srcset="">
+          <figcaption>The Tuono Speedster</figcaption>
+        </figure>
+
+        <figure class="bike">
+          <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/ap6176400ebk04-01-s_ivzbxu.webp"
+           alt="" srcset="">
+          <figcaption>The Tuono Speedster</figcaption>
+        </figure>
+
+        <figure class="bike">
+          <img src="https://res.cloudinary.com/moh-x/image/upload/v1610249390/fcc/aprilia/ap6166000ebj01-01-s_wbq795.webp"
+           alt="" srcset="">
+          <figcaption>The Tuono Speedster</figcaption>
+        </figure>
+
       </section>
 
-      <!-- <section id="video-section">
+      <section id="video-section">
         <header>
           <h2>The Design Process</h2>
         </header>
 
-        An embedded product video
-        <div id="video">
-          <iframe width="100%" height="100%"
+        <div id="video-container">
+          <iframe id="video"
           src="https://www.youtube.com/embed/JdydS9Soi6E" 
           title="YouTube video player" frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen></iframe>
         </div>
-      </section> -->
+      </section>
 
       <section id="contact-area">
 
@@ -393,5 +448,8 @@
       </section>
 
     </main>
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
   </body>
 </html>
