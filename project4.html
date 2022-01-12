@@ -22,6 +22,8 @@
       --separation-line-color: white;
       --main-doc-side-padding: 4rem;
       --switch-button-position: 2rem;
+      --link-color: lightcyan;
+      --link-hover-cover: cyan;
       font-family: 'Fira Code', monospace;
       scroll-behavior: smooth;
     }
@@ -94,11 +96,11 @@
     }
 
     #main-doc a {
-      color: lightcyan;
+      color: var(--link-color, lightcyan);
     }
 
     #main-doc a:hover {
-      color: cyan;
+      color: var(--link-hover-cover, cyan);
     }
 
     #main-doc hr {
@@ -160,6 +162,8 @@
       --secondary-bg-color: darkslategrey;
       --separation-line-color: rgb(102, 101, 101);
       --hamburger-filter: invert(16%) sepia(0%) saturate(0%) hue-rotate(151deg) brightness(99%) contrast(111%);
+      --link-color: rgb(0, 75, 85);
+      --link-hover-color: rgb(0, 43, 49);
     }
 
     #mode-switch:checked ~ #full-page #navbar {
